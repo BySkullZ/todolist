@@ -16,39 +16,47 @@
                 <input type="text" class="form-control" placeholder="Ajouter un titre" id="add-field-title">
             </div>
             <div id="todolist-input-text" class="input-group mb-3 w-50 m-auto">
-                <input type="text" class="form-control" placeholder="Ajouter une nouvelle tache" id="add-field-text">
+                <input type="text" class="form-control" placeholder="Ajouter un texte" id="add-field-text">
             </div>
-            <button class="btn btn-outline-secondary" type="button" id="add-button">Valider</button>
             <div id="todolist-dropdown" class="dropdown-center">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Catégorie
+                        Catégorie: A faire
                     </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" onclick="changeCategory('todo')">A faire</a></li>
                     <li><a class="dropdown-item" onclick="changeCategory('inprogress')">En cours</a></li>
                     <li><a class="dropdown-item" onclick="changeCategory('finished')">Terminé</a></li>
                 </ul>
-            </div>              
+            </div>  
+            <button class="btn btn-success text-light mb-3" type="button" id="add-button">Valider</button>            
             <div id="gridItems" class="container text-center">
                 <div class="row">
                     <div id="todo" class="col">
-                        <h2>A faire</h2>
+                        <h2>A faire (0)</h2>
                     </div>
                     <div id="inprogress" class="col">
-                        <h2>En cours</h2>
+                        <h2>En cours (0)</h2>
                     </div>
                     <div id="finished" class="col">
-                        <h2>Terminé</h2>
+                        <h2>Terminé (0)</h2>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div id="card" class="card mx-auto w-75 mt-2" style="display: none">
+        <div id="card" class="card mx-auto w-75 mt-4 bg-light bg-gradient card-shadow" style="display: none">
             <div class="card-body">
-                <h5 id="card-title" class="card-title">Card title</h5>
+                <h3 id="card-title" class="card-title">Card title</h3>
                 <p id="card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a id="delete" onclick="deleteCard(this)" class="btn btn-primary">Supprimer</a>
+                <a id="editcard" onclick="editCard(this)" class="btn btn-primary">Modifier</a>
+                <a id="deletecard" onclick="deleteCard(this)" class="btn text-danger">Supprimer</a>
+                <div id="editsection" style="display: none;">
+                    <h4 class="mt-2">Changer le titre</h4>
+                    <input type="text" class="form-control" placeholder="Ajouter un titre" id="edit-field-title">
+                    <h4 class="mt-2">Changer le texte</h4>
+                    <input type="text" class="form-control" placeholder="Ajouter un texte" id="edit-field-text">
+                    <a id="editcard" onclick="editCard(this)" class="btn btn-success mt-2">Valider</a>
+                </div>
             </div>
         </div>
 
