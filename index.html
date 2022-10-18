@@ -12,10 +12,13 @@
     <body>
         <section id="todolist">
             <h1>To do list</h1>
-            <div id="todolist-input" class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Ajouter une nouvelle tache" id="add-field">
-                <button class="btn btn-outline-secondary" type="button" id="add-button">Valider</button>
+            <div id="todolist-input-title" class="input-group mb-3 w-50 m-auto">
+                <input type="text" class="form-control" placeholder="Ajouter un titre" id="add-field-title">
             </div>
+            <div id="todolist-input-text" class="input-group mb-3 w-50 m-auto">
+                <input type="text" class="form-control" placeholder="Ajouter une nouvelle tache" id="add-field-text">
+            </div>
+            <button class="btn btn-outline-secondary" type="button" id="add-button">Valider</button>
             <div id="todolist-dropdown" class="dropdown-center">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Catégorie
@@ -41,10 +44,10 @@
             </div>
         </section>
 
-        <div id="card" class="card mx-auto w-75" style="display: none">
+        <div id="card" class="card mx-auto w-75 mt-2" style="display: none">
             <div class="card-body">
                 <h5 id="card-title" class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p id="card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a id="delete" onclick="deleteCard(this)" class="btn btn-primary">Supprimer</a>
             </div>
         </div>

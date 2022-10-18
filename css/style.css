@@ -20,11 +20,6 @@ section {
     padding-bottom: 5%;
 }
 
-#todolist-input {
-    width: 40%;
-    margin: auto;
-}
-
 #todolist-dropdown {
     text-align: center;
     padding-bottom: 8%;
