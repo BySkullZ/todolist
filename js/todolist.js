@@ -1,5 +1,6 @@
 var category = "todo";
 
+let card = document.getElementById("card");
 let title = document.getElementById("add-field-title");
 let text = document.getElementById("add-field-text");
 let addButton = document.getElementById("add-button");
@@ -15,9 +16,25 @@ function changeCategory(arg) {
     categoryButton.querySelector("button").textContent = "Catégorie: " + categoriesName.get(category) + " ";
 }
 
-function editCard(el) {
-    console.log(el.parentElement.q)
-    el.parentElement.querySelector("editsection").style.display = "block";
+function toggleCard(el) {
+    if (el.parentElement.querySelector("#editsection").style.display == "none") {
+        el.parentElement.querySelector("#editsection").style.display = "block";
+    } else {
+        el.parentElement.querySelector("#editsection").style.display = "none";
+    }
+}
+
+function editCard (el) {
+    let card = el.parentElement.parentElement
+    let cardTitle = card.querySelector("#card-title")
+    let cardText = card.querySelector("#card-text")
+    const newCardTitle = el.parentElement.querySelector("#edit-field-title")
+    const newCardText = el.parentElement.querySelector("#edit-field-text")
+    cardTitle.textContent = newCardTitle.value
+    cardText.textContent = newCardText.value
+    toggleCard(card)
+    newCardTitle.value = ""
+    newCardText.value = ""
 }
 
 function deleteCard(el) {
@@ -32,7 +49,6 @@ function updateChildElementCount(cat) {
 }
 
 addButton.addEventListener("click", ()=> {
-    let card = document.getElementById("card");
     let cardClone = card.cloneNode(true);
     cardClone.style.display = "block";
     cardClone.querySelector("#card-title").textContent = title.value;
