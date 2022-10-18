@@ -1,0 +1,50 @@
+body {
+    height: 100vh;
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+}
+
+#todolist {
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-color: aquamarine;
+}
+
+#todolist h1 {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 5%;
+}
+
+#todolist-input {
+    width: 40%;
+    margin: auto;
+}
+
+#todolist-dropdown {
+    text-align: center;
+    padding-bottom: 8%;
+}
+
+.grid-container {
+    display: grid;
+    column-gap: 50px;
+}
+
+.grid-item {
+    grid-column: 1 / 3;
+}
+
+.section-container {
+    width: 100%;
+    height: 100%;
+}
+
+.section-container h1 {
+    text-align: center;
+    font-size: 100px;
+}
