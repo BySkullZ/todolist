@@ -1,4 +1,6 @@
 var category = "todo";
+var currentElToDrag = null;
+var prevElParent = null;
 
 let card = document.getElementById("card");
 let title = document.getElementById("add-field-title");
@@ -57,6 +59,27 @@ function deleteCard(el) {
 function updateChildElementCount(cat) {
     let gridItems = document.getElementById(cat);
     gridItems.querySelector("h2").textContent = categoriesName.get(cat) + " (" + (gridItems.childElementCount - 1) + ")";
+}
+
+function dragStart(el) {
+    el.dataTransfer.effectAllowed="move";
+    el.dataTransfer.setData("text", el.target.getAttribute("id"));
+    currentElToDrag = el.target
+    prevElParent = el.currentTarget
+}
+
+function dragOver(el) {
+    el.preventDefault();
+    return false;
+}
+
+function dragDrop(el) {
+    let ob=el.dataTransfer.getData("text");
+    let category = el.currentTarget.getAttribute("id")
+    console.log(category, ob)
+    el.currentTarget.appendChild(currentElToDrag);
+    updateChildElementCount(el.currentTarget.id)
+    updateChildElementCount(prevElParent.id)
 }
 
 addButton.addEventListener("click", ()=> {
