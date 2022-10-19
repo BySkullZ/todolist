@@ -6,10 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <title>To do list</title>
     </head>
 
     <body>
+        <input type="checkbox" id="toggle" onclick="toggleDarkMode()">
         <section id="todolist">
             <h1>To do list</h1>
             <div id="todolist-input-title" class="input-group mb-3 w-50 m-auto">
@@ -30,7 +34,7 @@
                     </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" onclick="changeCategory('todo')">A faire</a></li>
-                    <li><a class="dropdown-item" onclick="changeCategory('inprogress')">En cours</a></li>
+                    <li><a class="dropdown-item" onclick="changeCategory('ongoing')">En cours</a></li>
                     <li><a class="dropdown-item" onclick="changeCategory('finished')">Terminé</a></li>
                 </ul>
             </div>  
@@ -40,7 +44,7 @@
                     <div id="todo" class="col-sm" onDragStart="dragStart(event)" onDragOver="return dragOver(event)" onDrop="return dragDrop(event)">
                         <h2>A faire (0)</h2>
                     </div>
-                    <div id="inprogress" class="col-sm" onDragStart="dragStart(event)" onDragOver="return dragOver(event)" onDrop="return dragDrop(event)">
+                    <div id="ongoing" class="col-sm" onDragStart="dragStart(event)" onDragOver="return dragOver(event)" onDrop="return dragDrop(event)">
                         <h2>En cours (0)</h2>
                     </div>
                     <div id="finished" class="col-sm" onDragStart="dragStart(event)" onDragOver="return dragOver(event)" onDrop="return dragDrop(event)">
@@ -49,7 +53,6 @@
                 </div>
             </div>
         </section>
-
         <div id="card" class="card mx-auto w-75 mt-4 bg-light bg-gradient card-shadow" draggable="true" style="display: none">
             <div class="card-body">
                 <h3 id="card-title" class="card-title">Card title</h3>

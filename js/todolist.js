@@ -10,12 +10,21 @@ let categoryButton = document.getElementById("todolist-dropdown");
 
 var categoriesName = new Map();
 categoriesName.set("todo", "A faire");
-categoriesName.set("inprogress", "En cours");
+categoriesName.set("ongoing", "En cours");
 categoriesName.set("finished", "Terminé");
 
 function changeCategory(arg) {
     category = arg;
     categoryButton.querySelector("button").textContent = "Catégorie: " + categoriesName.get(category) + " ";
+}
+
+function toggleDarkMode() {
+    let body = document.body;
+    let dmcards = document.querySelectorAll(".card");
+    body.classList.toggle("dark-theme");
+    for (let j = 0; j<dmcards.length; j++) {
+        dmcards[j].classList.toggle("bg-dark")
+    }
 }
 
 function toggleCard(el) {

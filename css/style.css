@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
     height: 100vh;
 }
@@ -12,7 +14,6 @@ section {
     text-align: center;
     background-size: cover;
     background-position: center;
-    background-color: rgb(255, 255, 255);
 }
 
 #todolist h1 {
@@ -56,4 +57,68 @@ section {
 .card2.dragging {
     opacity: .1;
     transform: scale(3);
+}
+
+i {
+  color: #f2f2f2;
+  font-size: 28px;
+}
+
+.main-content {
+  padding-left: 75px;
+  color: #f3f3f3;
+}
+.main-content h1 {
+  font-family: Open Sans, sans-serif;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 40px;
+}
+.main-content p {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 30px;
+  line-height: 1.7;
+}
+
+#toggle{
+  -webkit-appearance: none;
+  appearance: none;
+  height: 40px;
+  width: 75px;
+  background-color: #15181f;
+  position: relative;
+  left: 27px;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+}
+#toggle:after{
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  background-color: #ffffff;
+  top: 5px;
+  left: 7px;
+  border-radius: 50%;
+}
+
+p{
+  font-family: "Open Sans",sans-serif;
+  line-height: 35px;
+  text-align: justify;
+}
+.dark-theme{
+  background-color: #15181f;
+  color: #e5e5e5;
+}
+.dark-theme #toggle{
+  background-color: #ffffff;
+}
+.dark-theme #toggle:after{
+  background-color: transparent;
+  box-shadow: 10px 10px #15181f;
+  top: -4px;
+  left: 30px;
 }
