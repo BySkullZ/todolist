@@ -49,11 +49,23 @@ function updateChildElementCount(cat) {
 }
 
 addButton.addEventListener("click", ()=> {
-    let cardClone = card.cloneNode(true);
-    cardClone.style.display = "block";
-    cardClone.querySelector("#card-title").textContent = title.value;
-    cardClone.querySelector("#card-text").textContent = text.value;
-    let gridItems = document.getElementById(category);
-    gridItems.appendChild(cardClone);
-    gridItems.querySelector("h2").textContent = categoriesName.get(category) + " (" + (gridItems.childElementCount - 1) + ")";
+    if (title.value.trim().length === 0) {
+        title.classList.add("is-invalid");
+    } else {
+        title.classList.remove("is-invalid");
+    }
+    if (text.value.trim().length === 0) {
+        text.classList.add("is-invalid");
+    } else {
+        text.classList.remove("is-invalid");
+    }
+    if (title.value.trim().length !== 0 && text.value.trim().length !== 0) {
+        let cardClone = card.cloneNode(true);
+        cardClone.style.display = "block";
+        cardClone.querySelector("#card-title").textContent = title.value;
+        cardClone.querySelector("#card-text").textContent = text.value;
+        let gridItems = document.getElementById(category);
+        gridItems.appendChild(cardClone);
+        gridItems.querySelector("h2").textContent = categoriesName.get(category) + " (" + (gridItems.childElementCount - 1) + ")";
+    }
 })
