@@ -30,11 +30,22 @@ function editCard (el) {
     let cardText = card.querySelector("#card-text")
     const newCardTitle = el.parentElement.querySelector("#edit-field-title")
     const newCardText = el.parentElement.querySelector("#edit-field-text")
-    cardTitle.textContent = newCardTitle.value
-    cardText.textContent = newCardText.value
-    toggleCard(card)
-    newCardTitle.value = ""
-    newCardText.value = ""
+    if (newCardTitle.value.trim().length === 0) {
+        newCardTitle.classList.add("is-invalid");
+    } else {
+        newCardTitle.classList.remove("is-invalid");
+    }
+    if (newCardText.value.trim().length === 0) {
+        newCardText.classList.add("is-invalid");
+    } else {
+        newCardText.classList.remove("is-invalid");
+    } if (newCardTitle.value.trim().length !== 0 && newCardText.value.trim().length !== 0) {
+        cardTitle.textContent = newCardTitle.value
+        cardText.textContent = newCardText.value
+        toggleCard(card)
+        newCardTitle.value = ""
+        newCardText.value = ""
+    }
 }
 
 function deleteCard(el) {
