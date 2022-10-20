@@ -20,10 +20,19 @@ function changeCategory(arg) {
 
 function toggleDarkMode() {
     let body = document.body;
+    let dropdown = document.querySelector(".dropdown-menu");
     let dmcards = document.querySelectorAll(".card");
+    let formcontrol = document.querySelectorAll(".form-control");
     body.classList.toggle("dark-theme");
+    dropdown.classList.toggle("dropdown-menu-dark");
     for (let j = 0; j<dmcards.length; j++) {
-        dmcards[j].classList.toggle("bg-dark")
+        dmcards[j].classList.toggle("bg-dark");
+        dmcards[j].classList.toggle("bg-gradient");
+    }
+    for (let j = 0; j<formcontrol.length; j++) {
+        formcontrol[j].classList.toggle("bg-dark");
+        formcontrol[j].classList.toggle("text-light");
+        formcontrol[j].classList.toggle("border-dark");
     }
 }
 
@@ -45,12 +54,6 @@ function editCard (el) {
         newCardTitle.classList.add("is-invalid");
     } else {
         newCardTitle.classList.remove("is-invalid");
-    }
-    if (newCardText.value.trim().length === 0) {
-        newCardText.classList.add("is-invalid");
-    } else {
-        newCardText.classList.remove("is-invalid");
-    } if (newCardTitle.value.trim().length !== 0 && newCardText.value.trim().length !== 0) {
         cardTitle.textContent = newCardTitle.value
         cardText.textContent = newCardText.value
         toggleCard(card)
@@ -96,13 +99,6 @@ addButton.addEventListener("click", ()=> {
         title.classList.add("is-invalid");
     } else {
         title.classList.remove("is-invalid");
-    }
-    if (text.value.trim().length === 0) {
-        text.classList.add("is-invalid");
-    } else {
-        text.classList.remove("is-invalid");
-    }
-    if (title.value.trim().length !== 0 && text.value.trim().length !== 0) {
         let cardClone = card.cloneNode(true);
         cardClone.style.display = "block";
         cardClone.querySelector("#card-title").textContent = title.value;
