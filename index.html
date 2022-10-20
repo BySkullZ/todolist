@@ -4,23 +4,27 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Importation de bootstrap.-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
-        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <!--Importation des icones bootstrap.-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <title>To do list</title>
     </head>
 
     <body>
+        <!--Ceci est la div de la sidebar, elle permet de contenir tous les bouttons à l'interieur, ils sont uniquements esthétique.-->
         <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark navbar-collapse">
+             <!--Les balises <i> sont uniquements affichées lorsque l'utilisateur est sur un écran plus petit comme un téléphone.-->
             <i class="bi bi-boxes"></i>
+            <!--Les balises <a> sont uniquements affichées lorsque l'utilisateur est sur un écran plus grand, donc quand les balises <i> ne sont plus visibles.-->
             <a class="align-items-center text-white text-decoration-none"><span class="bi bi-boxes"></span> Helio Kais Maurad</a>
             <hr>
+            <!--La première balise <ul> permet l'affichage des bouttons en haut de la sidebar, et la class mb-auto permet de décaler la deuxième liste en bas de l'écran.-->
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <i class="bi bi-house-fill"></i>
-                    <a href="" class="nav-link text-light"><span class="bi bi-house-fill"></span> Home</a>
+                    <a href="" class="nav-link text-light"><span class="bi bi-house-fill"></span> Accueil</a>
                 </li>
                 <li>
                     <i class="bi bi-speedometer2"></i>
@@ -32,51 +36,63 @@
                 </li>
                 <li>
                     <i class="bi bi-archive-fill"></i>
-                    <a href="" class="nav-link text-light"><span class="bi bi-archive-fill"></span> Products</a>
+                    <a href="" class="nav-link text-light"><span class="bi bi-archive-fill"></span> Produits</a>
                 </li>
                 <li>
                     <i class="bi bi-person-lines-fill"></i>
-                    <a href="" class="nav-link text-light"><span class="bi bi-person-lines-fill"></span> Customers</a>
+                    <a href="" class="nav-link text-light"><span class="bi bi-person-lines-fill"></span> Clients</a>
                 </li>
             </ul>
             <hr>
+            <!--Ceci est la deuxième liste qui contient le settings et le log out.-->
             <ul class="nav flex-column">
                 <li>
                     <i class="bi bi-gear-fill"></i>
-                    <a href="" class="nav-link text-light"><span class="bi bi-gear-fill"></span> Settings</a>
+                    <a href="" class="nav-link text-light"><span class="bi bi-gear-fill"></span> Paramètres</a>
                 </li>
                 <li>
                     <i class="bi bi-power"></i>
-                    <a href="" class="nav-link text-danger"><span class="bi bi-power"></span> Log Out</a>
+                    <a href="" class="nav-link text-danger"><span class="bi bi-power"></span> Déconnexion</a>
                 </li>
             </ul>
         </div>
         
+        <!--Ceci est la section a droite de la navbar.-->
         <section id="todolist">
             <h1>To do list</h1>
+            <!--Ce boutton permet d'activer ou de désactiver le dark mode sur le site à l'aide de la fonction toggleDarkMode().-->
             <input type="checkbox" id="toggle" onclick="toggleDarkMode()">
+            <!--Ceci est la case ou l'on rentre le titre de notre carte to do list. Cette étape est obligatoire.-->
             <div id="todolist-input-title" class="input-group mb-3 w-50 m-auto">
                 <input type="text" class="form-control" placeholder="Ajouter un titre" id="add-field-title">
+                <!--Cette partie permet d'afficher un message d'erreur si rien n'est rentré dans le titre.-->
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                    Merci de rentrer un titre.
                 </div>
             </div>
+            <!--Ceci est la case ou l'on rentre le texte de notre carte to do list. Cette étape n'est pas obligatoire.-->
             <div id="todolist-input-text" class="input-group mb-3 w-50 m-auto">
                 <input type="text" class="form-control" placeholder="Ajouter un texte" id="add-field-text">
             </div>
+
+            <!--Ce dropdown permet de changer la catégorie de la carte et donc permettre à la carte d'aller dans la bonne catégorie.-->
             <div id="todolist-dropdown" class="dropdown-center">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Catégorie: A faire
-                    </button>
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Catégorie: A faire
+                </button>
+                <!--Chaque boutton utilise la même fonction et envoie un argument avec son nom propre pour que le fichier JavaScript comprenne quelle est la catégorie choisie.-->
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" onclick="changeCategory('todo')">A faire</a></li>
                     <li><a class="dropdown-item" onclick="changeCategory('ongoing')">En cours</a></li>
                     <li><a class="dropdown-item" onclick="changeCategory('finished')">Terminé</a></li>
                 </ul>
             </div>  
-            <button class="btn btn-success text-light mb-3" type="button" id="add-button">Valider</button>            
+            <!--Le boutton valider permet à la carte d'être créée.-->
+            <button class="btn btn-success text-light mb-3" type="button" id="add-button">Valider</button>
+            <!--Cette div est nécessaire au bon fonctionnement du Drag & Drop.-->
             <div id="gridItems" class="container text-center">
                 <div class="row">
+                    <!--Chaque div ci-dessous ont un id propre que le fichier JavaScript va utiliser pour savoir ou sont les colonnes. Elles ont également les fonctions du Drag & Drop.-->
                     <div id="todo" class="col-sm" onDragStart="dragStart(event)" onDragOver="return dragOver(event)" onDrop="return dragDrop(event)">
                         <h2>A faire (0)</h2>
                     </div>
@@ -89,22 +105,31 @@
                 </div>
             </div>
         </section>
+
+        <!--La div avec un id "card" est la carte qui est clonée par le fichier JavaScript, déplacée dans la bonne catégorie puis ensuite affichée en changeant le display en block.-->
         <div id="card" class="card mx-auto w-75 mt-4 bg-light bg-gradient card-shadow" draggable="true" style="display: none">
             <div class="card-body">
+                <!--Le titre de la carte qui sera remplacé par le fichier JavaScript.-->
                 <h3 id="card-title" class="card-title">Card title</h3>
+                <!--Le texte de la carte qui sera remplacé également.-->
                 <p id="card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <!--Le boutton modifier qui utilise la fonction toggleCard() afin d'afficher la partie de modification en dessous de la carte.-->
                 <a id="togglecard" onclick="toggleCard(this)" class="btn btn-primary">Modifier</a>
+                <!--Le boutton supprimer qui utilise la fonction deleteCard() pour se supprimer.-->
                 <a id="deletecard" onclick="deleteCard(this)" class="btn text-danger">Supprimer</a>
+                <!--Cette div est la partie pour modifier la carte. Elle est gérée par la fonction toggleCard(), le display permet de la cacher ou de l'afficher.-->
                 <div id="editsection" style="display: none;">
                     <h4 class="mt-2">Changer le titre</h4>
                     <input type="text" class="form-control" placeholder="Ajouter un titre" id="edit-field-title">
                     <h4 class="mt-2">Changer le texte</h4>
                     <input type="text" class="form-control" placeholder="Ajouter un texte" id="edit-field-text">
+                    <!--Le boutton valider valide la modification de la carte à condition que le titre ne soit pas vide.-->
                     <a id="editcard" onclick="editCard(this)" class="btn btn-success mt-2">Valider</a>
                 </div>
             </div>
         </div>
 
+        <!--Importation du script Bootstrap et de notre fichier JavaScript.-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <script src="js/todolist.js"></script>
     </body>
